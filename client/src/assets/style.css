@@ -1,0 +1,46 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.card, .table {
+  background-color: inherit;
+  color: inherit;
+}
+
+img.zoomable {
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+img.zoomable:hover {
+  transform: scale(1.05);
+}
+
+footer, .navbar {
+  transition: background-color 0.3s;
+}
+
+.dark-mode .navbar {
+  background-color: #1f1f1f !important;
+}
+
+.dark-mode footer {
+  background-color: #1f1f1f;
+  color: #ddd;
+}
+
+input[type="text"], .form-control, .btn {
+  transition: all 0.2s;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
