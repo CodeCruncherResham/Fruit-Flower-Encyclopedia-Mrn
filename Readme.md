@@ -1,27 +1,28 @@
 # 🌿 Fruit & Flower Encyclopedia
 
-A modern and interactive MERN stack web application that allows users to **explore**, **compare**, **bookmark**, and **review** various fruits and flowers with multilingual support, dark mode, voice input, and external API integration.
+A modern and interactive MERN stack web application that allows users to **explore**, **compare**, **bookmark**, and **review** various fruits and flowers — with support for **multilingual interface**, **dark mode**, **voice search**, and **external API integration**.
+
 
 ## 🌟 Features
 
 - 🧭 **Search & Explore** fruits and flowers
 - 🌐 **Multilingual Toggle** (English / Hindi)
-- 🌗 **Dark Mode Support**
+- 🌗 **Dark Mode** support
 - 🎙️ **Voice Search** input
 - 📊 **Compare** two fruits side-by-side
-- 🔖 **Bookmark** favorite items (stored in LocalStorage)
+- 🔖 **Bookmark** favorite items (saved in browser storage)
 - ✍️ **User Reviews & Ratings** system
-- 🔎 **Smart Fetching**
-  - If not in DB, it fetches:
-    - 🍎 Fruits from **Spoonacular API**
-    - 🌸 Flowers from **Wikipedia API**
+- 🔎 **Smart Data Fetching**
+  - Not found in DB? Auto-fetches from:
+    - 🍎 **Spoonacular API** for fruits
+    - 🌸 **Wikipedia API** for flowers
 
 
 ## 🧰 Tech Stack
 
-| Frontend              | Backend            | Database     | External APIs            |
-|-----------------------|--------------------|--------------|--------------------------|
-| React, Bootstrap 5    | Express.js, Node.js| MongoDB      | Spoonacular, Wikipedia   |
+| Frontend               | Backend              | Database | External APIs             |
+|------------------------|----------------------|----------|---------------------------|
+| React, Bootstrap 5     | Express.js, Node.js  | MongoDB  | Spoonacular, Wikipedia    |
 
 
 ## 🧱 Folder Structure
@@ -47,9 +48,6 @@ fruit-flower-encyclopedia/
 ├── .env
 └── package.json
 
-````
-
----
 
 ## 🧪 Local Setup
 
@@ -58,7 +56,6 @@ fruit-flower-encyclopedia/
 ```bash
 git clone https://github.com/your-username/fruit-flower-encyclopedia.git
 cd fruit-flower-encyclopedia
-````
 
 ### 2. Backend Setup
 
@@ -67,11 +64,15 @@ cd server
 npm install
 ```
 
-#### 📄 Create `.env` file
+#### Create `.env` file
 
+```
 MONGO_URI=mongodb://localhost:27017/fruitFlowerDB
 SPOONACULAR_KEY=your_spoonacular_api_key
 PORT=5000
+```
+
+Then run:
 
 ```bash
 npm run dev
@@ -85,37 +86,45 @@ npm install
 npm start
 ```
 
+
 ## 🚀 Live Demo
 
-> [🔗 Link to hosted project (if available)](https://your-deployment-link.com)
+🔗 [View Live Site](https://codecruncherresham.github.io/Fruit-Flower-Encyclopedia-Mrn/)
 
 
 ## 🖼️ Screenshots
 
-> Add 2–3 screenshots showcasing Home, Comparison, Review, and Dark Mode.
+> Add 2–3 screenshots showcasing:
+>
+![Home Page](client/public/screenshots/home.png)
+![Dark mode UI Page](client/public/screenshots/compare.png)
 
 
 ## 📤 API Routes
 
-### Fruits
+### 🔹 Fruits
 
-* `GET /api/fruits` → All fruits
-* `GET /api/fruits/:name` → Fruit by name (from DB or Spoonacular)
+* `GET /api/fruits` – Get all fruits
+* `GET /api/fruits/:name` – Get fruit by name
 
-### Flowers
+### 🔹 Flowers
 
-* `GET /api/flowers` → All flowers
-* `GET /api/flowers/:name` → Flower by name (from DB or Wikipedia)
+* `GET /api/flowers` – Get all flowers
+* `GET /api/flowers/:name` – Get flower by name
 
-### Reviews
+### 🔹 Reviews
 
-* `POST /api/reviews` → Submit a review
-* `GET /api/reviews/:itemName` → Get reviews for item
+* `POST /api/reviews` – Submit a review
+* `GET /api/reviews/:itemName` – Get all reviews for an item
 
 
 ## ✍️ Author
 
 > 🔸 **Resham Yadav**
-> 🌐 [Portfolio](https://your-portfolio.com) | 💼 [LinkedIn](https://linkedin.com/in/yourprofile) | 📁 [GitHub](https://github.com/your-username)
+> 🌐 [Portfolio](https://codecruncherresham.github.io/portfolio/)
+> 💼 [LinkedIn](https://linkedin.com/in/resham-yadav-a8740b28b/)
+> 📁 [GitHub](https://github.com/CodeCruncherResham)
+
+
 
 
