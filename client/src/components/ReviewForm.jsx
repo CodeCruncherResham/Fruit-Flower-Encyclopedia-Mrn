@@ -13,7 +13,6 @@ function ReviewForm({ itemName,itemType }) {
 
   const handleSubmit = async () => {
     await axios.post("/api/reviews", {
-      itemType: "fruit", // or "flower" dynamically if needed
       itemType,
       itemName,
       rating,

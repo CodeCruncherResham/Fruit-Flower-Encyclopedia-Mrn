@@ -24,18 +24,55 @@ function FruitPage() {
 
   return (
     <div className="card shadow p-4">
-      <h2>{fruit.name} <button className="btn btn-outline-warning btn-sm" onClick={handleBookmark}>🔖 Bookmark</button></h2>
+      <h2>
+        {fruit.name}{" "}
+        <button className="btn btn-outline-warning btn-sm" onClick={handleBookmark}>
+          🔖 Bookmark
+        </button>
+      </h2>
       <img src={fruit.image} alt={fruit.name} className="img-fluid mb-3 rounded" />
       <p>{fruit.description}</p>
-      <h5>Scientific Name:</h5>
-      <p>{fruit.scientificName}</p>
-      <h5>Nutritional Value:</h5>
-      <ul>{fruit.nutrition.map((item, i) => <li key={i}>{item}</li>)}</ul>
-      <h5>Medicinal Uses:</h5>
-      <ul>{fruit.medicinalUses.map((item, i) => <li key={i}>{item}</li>)}</ul>
-      <h5>Variants:</h5>
-      <ul>{fruit.variants.map((v, i) => <li key={i}>{v}</li>)}</ul>
-      
+
+      {fruit.scientificName && (
+        <>
+          <h5>Scientific Name:</h5>
+          <p>{fruit.scientificName}</p>
+        </>
+      )}
+
+      {fruit.nutrition && fruit.nutrition.length > 0 && (
+        <>
+          <h5>Nutritional Value:</h5>
+          <ul>
+            {fruit.nutrition.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {fruit.medicinalUses && fruit.medicinalUses.length > 0 && (
+        <>
+          <h5>Medicinal Uses:</h5>
+          <ul>
+            {fruit.medicinalUses.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {fruit.variants && fruit.variants.length > 0 && (
+        <>
+          <h5>Variants:</h5>
+          <ul>
+            {fruit.variants.map((v, i) => (
+              <li key={i}>{v}</li>
+            ))}
+          </ul>
+        </>
+      )}
+
       {/* ✅ Review Section */}
       <ReviewForm itemName={fruit.name} />
     </div>

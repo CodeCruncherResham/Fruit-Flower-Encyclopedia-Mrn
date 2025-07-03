@@ -24,17 +24,50 @@ function FlowerPage() {
 
   return (
     <div className="card shadow p-4">
-      <h2>{flower.name} <button className="btn btn-outline-warning btn-sm" onClick={handleBookmark}>🔖 Bookmark</button></h2>
+      <h2>
+        {flower.name}{" "}
+        <button className="btn btn-outline-warning btn-sm" onClick={handleBookmark}>
+          🔖 Bookmark
+        </button>
+      </h2>
       <img src={flower.image} alt={flower.name} className="img-fluid mb-3 rounded" />
       <p>{flower.description}</p>
-      <h5>Scientific Name:</h5>
-      <p>{flower.scientificName}</p>
-      <h5>Cultural Meaning:</h5>
-      <p>{flower.culturalMeaning}</p>
-      <h5>Color Variants:</h5>
-      <ul>{flower.colorVariants.map((c, i) => <li key={i}>{c}</li>)}</ul>
-      <h5>Uses:</h5>
-      <ul>{flower.uses.map((u, i) => <li key={i}>{u}</li>)}</ul>
+
+      {flower.scientificName && (
+        <>
+          <h5>Scientific Name:</h5>
+          <p>{flower.scientificName}</p>
+        </>
+      )}
+
+      {flower.culturalMeaning && (
+        <>
+          <h5>Cultural Meaning:</h5>
+          <p>{flower.culturalMeaning}</p>
+        </>
+      )}
+
+      {flower.colorVariants && flower.colorVariants.length > 0 && (
+        <>
+          <h5>Color Variants:</h5>
+          <ul>
+            {flower.colorVariants.map((c, i) => (
+              <li key={i}>{c}</li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {flower.uses && flower.uses.length > 0 && (
+        <>
+          <h5>Uses:</h5>
+          <ul>
+            {flower.uses.map((u, i) => (
+              <li key={i}>{u}</li>
+            ))}
+          </ul>
+        </>
+      )}
 
       {/* ✅ Review Section */}
       <ReviewForm itemName={flower.name} />

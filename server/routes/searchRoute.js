@@ -7,29 +7,45 @@ const getItemByType = require("../utils/getItemByType");
 router.get("/:name", async (req, res) => {
   const { name } = req.params;
 
-  // First, try to find flower in DB
-  let flower = await Flower.findOne({ name: new RegExp(name, "i") });
-  if (flower) return res.json({ type: "flower" });
+  let flower = await Flower.findOne({ name: new RegExp(`^${name}$`, "i") });
+  let fruit = await Fruit.findOne({ name: new RegExp(`^${name}$`, "i") });
 
-  // If not in DB, try external fetch
-  const flowerData = await getItemByType("flower", name);
+  if (flower && fruit) {
+    // If found in both, prefer flower or ask user manually
+    return res.json({ type: "flower", name: flower.name });
+  }
+
+  if (flower) {
+    return res.json({ type: "flower", name: flower.name });
+  }
+
+  if (fruit) {
+    return res.json({ type: "fruit", name: fruit.name });
+  }
+
+  // Not found in DB, fetch both externally in parallel
+  const [flowerData, fruitData] = await Promise.all([
+    getItemByType("flower", name),
+    getItemByType("fruit", name)
+  ]);
+
+  if (flowerData && fruitData) {
+    // If both found, prefer flower or ask user manually (here preferring flower)
+    await Flower.create(flowerData);
+    await Fruit.create(fruitData);
+    return res.json({ type: "flower", name: flowerData.name });
+  }
+
   if (flowerData) {
     await Flower.create(flowerData);
-    return res.json({ type: "flower" });
+    return res.json({ type: "flower", name: flowerData.name });
   }
 
-  // Now try fruit in DB
-  let fruit = await Fruit.findOne({ name: new RegExp(name, "i") });
-  if (fruit) return res.json({ type: "fruit" });
-
-  // If not in DB, try external fetch
-  const fruitData = await getItemByType("fruit", name);
   if (fruitData) {
     await Fruit.create(fruitData);
-    return res.json({ type: "fruit" });
+    return res.json({ type: "fruit", name: fruitData.name });
   }
 
-  // Nothing found at all
   res.status(404).json({ type: "unknown" });
 });
 
